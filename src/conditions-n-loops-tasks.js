@@ -116,8 +116,27 @@ function isIsoscelesTriangle(a, b, c) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  let result = '';
+
+  const units = num % 10;
+  const tens = (num - units) / 10;
+
+  for (let i = 0; i < tens; i += 1) {
+    result += 'X';
+  }
+
+  if (units === 1) result += 'I';
+  else if (units === 2) result += 'II';
+  else if (units === 3) result += 'III';
+  else if (units === 4) result += 'IV';
+  else if (units === 5) result += 'V';
+  else if (units === 6) result += 'VI';
+  else if (units === 7) result += 'VII';
+  else if (units === 8) result += 'VIII';
+  else if (units === 9) result += 'IX';
+
+  return result;
 }
 
 /**
@@ -135,8 +154,35 @@ function convertToRomanNumerals(/* num */) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  let result = '';
+  let firstWord = true;
+
+  for (let i = 0; i < numberStr.length; i += 1) {
+    const ch = numberStr[i];
+    let word = '';
+
+    if (ch === '0') word += 'zero';
+    else if (ch === '1') word += 'one';
+    else if (ch === '2') word += 'two';
+    else if (ch === '3') word += 'three';
+    else if (ch === '4') word += 'four';
+    else if (ch === '5') word += 'five';
+    else if (ch === '6') word += 'six';
+    else if (ch === '7') word += 'seven';
+    else if (ch === '8') word += 'eight';
+    else if (ch === '9') word += 'nine';
+    else if (ch === '-') word += 'minus';
+    else if (ch === '.' || ch === ',') word += 'point';
+
+    if (!firstWord) {
+      result += ' ';
+    }
+    result += word;
+    firstWord = false;
+  }
+
+  return result;
 }
 
 /**
@@ -169,8 +215,13 @@ function isPalindrome(/* str */) {
  *  'qwerty', 'Q'     => -1
  *  'qwerty', 'p'     => -1
  */
-function getIndexOf(/* str, letter */) {
-  throw new Error('Not implemented');
+function getIndexOf(str, letter) {
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === letter) {
+      return i;
+    }
+  }
+  return -1;
 }
 
 /**
